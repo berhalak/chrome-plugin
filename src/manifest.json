@@ -1,0 +1,51 @@
+{
+	"manifest_version": 1,
+	"name": "Dev plugin",
+	"description": "",
+	"version": "1.0.0",
+	"background": {
+		"scripts": [
+			"./background.js"
+		],
+		"persistent": false
+	},
+	"icons": {
+		"16": "./icon/icon-16.png",
+		"32": "./icon/icon-32.png",
+		"48": "./icon/icon-48.png",
+		"128": "./icon/icon-128.png"
+	},
+	"browser_action": {
+		"default_icon": {
+			"19": "./icon/icon-19.png",
+			"38": "./icon/icon-38.png"
+		},
+		"default_popup": "./html/popup.html",
+		"default_title": "Dev plugin"
+	},
+	"options_ui": {
+		"page": "plugin/html/options.html",
+		"chrome_style": true
+	},
+	"content_scripts": [
+		{
+			"matches": [
+        "<all_urls>"
+			],
+			"js": [
+				"./execute-on-website.min.js",
+				"./content.js"
+			],
+			"css": [
+				"./css/content.css"
+			],
+			"run_at": "document_end"
+		}
+	],
+	"permissions": [
+		"contentSettings",
+		"webRequestBlocking",
+		"storage",
+		"<all_urls>"
+	]
+}
